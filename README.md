@@ -2,7 +2,7 @@
 
 This project is meant to replace the quickstart for Parse Projects/IntegratingFacebookTutorial by providing an Android project offering twitter and facebook login out of the box. It also allows Anonymous Parse login with the ability to link to Facebook/Twitter afterwards. I don't currently have email/password login option, but I might add it later.
 
-This is a modified version of the Parse Tutorial <a href="https://www.parse.com/tutorials/integrating-facebook-in-android">Integrating Facebook in Android</a>. 
+This is a modified version of the Parse Tutorial [Integrating Facebook in Android](https://www.parse.com/tutorials/integrating-facebook-in-android). 
 
 # Setup
 
@@ -16,3 +16,6 @@ If a user has not previously authenticated with the app, or has logged out, the 
 ## MainActivity
 
 After logging in the user will see this activity. It merely shows the parse "username". If the user is logged in via facebook or twitter, the options menu will have the option to logout. If the user is logged in anonymously, the options menu will allow users to link to either twitter or facebook. 
+
+# Special Thanks
+Special thanks to HMKCode for [this blog post](http://hmkcode.com/android-layout-design-by-example-social-networks-sign-in-buttons/) which was a basis for the login page. 
