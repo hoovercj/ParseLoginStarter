@@ -16,3 +16,7 @@ If a user has not previously authenticated with the app, or has logged out, the 
 ## MainActivity
 
 After logging in the user will see this activity. It merely shows the parse "username". If the user is logged in via facebook or twitter, the options menu will have the option to logout. If the user is logged in anonymously, the options menu will allow users to link to either twitter or facebook. 
+
+![Log In Pic](http://media.tumblr.com/98d8679e79530d68764a78f71363ae7d/tumblr_inline_n62hrul06F1r0plfi.png "Main Login Screen")
+![Log In Dialog](http://media.tumblr.com/8d2a6353ff124fae7e1ebb48886de62f/tumblr_inline_n62hs5kRSe1r0plfi.png "Anonymous Login Dialog")
+![Main Activity](http://media.tumblr.com/40aa7e511e8c1f3857ddf4c58798f009/tumblr_inline_n62hs8BmSj1r0plfi.png "Main Activity w/ Options")

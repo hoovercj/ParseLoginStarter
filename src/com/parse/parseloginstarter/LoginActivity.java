@@ -1,15 +1,12 @@
 package com.parse.parseloginstarter;
 
-import java.util.Arrays;
-import java.util.List;
-
 import android.app.Activity;
 import android.app.Dialog;
+import android.app.DialogFragment;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 
@@ -21,7 +18,7 @@ import com.parse.ParseTwitterUtils;
 import com.parse.ParseUser;
 import com.parse.integratingfacebooktutorial.R;
 
-public class LoginActivity extends Activity {
+public class LoginActivity extends Activity implements MyDialog.MyDialogListener{
 
 	private Button anonLoginButton;
 	private Button fbLoginButton;
@@ -40,7 +37,9 @@ public class LoginActivity extends Activity {
 		anonLoginButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				onLoginButtonClicked(LoginTypes.ANONYMOUS);
+				MyDialog d = new MyDialog();
+				d.setPositiveText(R.string.action_login);
+				d.show(getFragmentManager(), ParseLoginStarterApplication.TAG);
 			}
 		});
 		
@@ -48,7 +47,7 @@ public class LoginActivity extends Activity {
 		fbLoginButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				onLoginButtonClicked(LoginTypes.FACEBOOK);
+				login(LoginTypes.FACEBOOK);
 			}
 		});
 		
@@ -56,7 +55,7 @@ public class LoginActivity extends Activity {
 		twitterLoginButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				onLoginButtonClicked(LoginTypes.TWITTER);
+				login(LoginTypes.TWITTER);
 			}
 		});
 
@@ -75,7 +74,7 @@ public class LoginActivity extends Activity {
 		ParseFacebookUtils.finishAuthentication(requestCode, resultCode, data);
 	}
 
-	private void onLoginButtonClicked(LoginTypes loginType) {
+	private void login(LoginTypes loginType) {
 		LoginActivity.this.progressDialog = ProgressDialog.show(
 				LoginActivity.this, "", getString(R.string.spinner_logging_in), true);
 		switch (loginType) {
@@ -124,5 +123,18 @@ public class LoginActivity extends Activity {
 				showMainActivity();
 			}
 		}
+	}
+
+	/*
+	 * This is only called only when the user tries to login anonymously 
+	 */
+	@Override
+	public void onDialogPositiveClick(DialogFragment dialog) {
+		login(LoginTypes.ANONYMOUS);
+	}
+
+	@Override
+	public void onDialogNegativeClick(DialogFragment dialog) {
+		// Do nothing
 	}
 }
