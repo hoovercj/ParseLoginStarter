@@ -23,4 +23,3 @@ After logging in the user will see this activity. It merely shows the parse "use
 
 # Special Thanks
 Special thanks to HMKCode for [this blog post](http://hmkcode.com/android-layout-design-by-example-social-networks-sign-in-buttons/) which was a basis for the login page. 
->>>>>>> f28eb397553d494fced96bd371d59c9e224800a7
