@@ -17,15 +17,16 @@
 	<string name="login_text_anon">Sign in Anonymously</string>
 	<string name="login_text_select_username">Select a username:</string>
 	<string name="login_text_finish">Finish</string>
+	<string name="login_text_username_invalid">Usernames can only contain 0-9,A-Z. Usernames are not case sensitive.</string>
 	<string name="login_text_username_unavailable">That username isn\'t available. Try another.</string>
 	<string name="dialog_title_confirm">Are you sure?</string>
 	<string name="dialog_anonymous_warning">You must link your account before logging out. If you do not, all your information will be lost. Do you wish to continue?\</string>
 	<string name="username">Username</string>
 	<string name="check_availability">Check Availability</string>
 	<!-- Place your keys below	 -->
-	<string name="PARSE_APPLICATION_ID">***REMOVED***</string>
-	<string name="PARSE_CLIENT_KEY">***REMOVED***</string>
-	<string name="FACEBOOK_APP_ID">***REMOVED***</string>
-	<string name="TWITTER_API_KEY">***REMOVED***</string>
-	<string name="TWITTER_API_SECRET">***REMOVED***</string>
+	<string name="PARSE_APPLICATION_ID">YOUR_PARSE_APP_ID_HERE</string>
+	<string name="PARSE_CLIENT_KEY">YOUR_PARSE_CLIENT_ID_HERE</string>
+	<string name="FACEBOOK_APP_ID">YOUR_FACEBOOK_APP_ID_HERE</string>
+	<string name="TWITTER_API_KEY">YOUR_TWITTER_API_KEY_HERE</string>
+	<string name="TWITTER_API_SECRET">YOUR_TWITTER_API_SECRET_HERE</string>
 </resources>

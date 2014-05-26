@@ -1,15 +1,60 @@
 <level-list
     xmlns:android="http://schemas.android.com/apk/res/android" >
     <item
-        android:drawable="@drawable/ic_check_gray"
         android:maxLevel="1"
-        android:minLevel="0" />
+        android:minLevel="0">
+	        <selector
+	        android:constantSize="true"
+	        android:variablePadding="false">
+		        <item android:state_pressed="true">
+	                <layer-list>
+                        <item android:drawable="@drawable/ic_check_gray" />
+	                    <item android:drawable="@drawable/btn_default_pressed_holo_light" />
+		            </layer-list>
+		        </item>
+		        <item android:state_pressed="false">
+	                <layer-list>
+                        <item android:drawable="@drawable/ic_check_gray" />
+		            </layer-list>
+		        </item>
+	        </selector>
+        </item>
     <item
-        android:drawable="@drawable/ic_check_red"
         android:maxLevel="2"
-        android:minLevel="2" />
+        android:minLevel="2">
+     	<selector
+	        android:constantSize="true"
+	        android:variablePadding="false">
+	        <item android:state_pressed="true">
+                <layer-list>
+					<item android:drawable="@drawable/ic_check_red" />
+                    <item android:drawable="@drawable/btn_default_pressed_holo_light" />
+	            </layer-list>
+	        </item>
+	        <item android:state_pressed="false">
+                <layer-list>
+                       <item android:drawable="@drawable/ic_check_red" />
+	            </layer-list>
+	        </item>
+        </selector>
+    </item>
     <item
-        android:drawable="@drawable/ic_check_green"
         android:maxLevel="3"
-        android:minLevel="3" />
+        android:minLevel="3">
+     	<selector
+	        android:constantSize="true"
+	        android:variablePadding="false">
+	        <item android:state_pressed="true">
+                <layer-list>
+					<item android:drawable="@drawable/ic_check_green" />
+                    <item android:drawable="@drawable/btn_default_pressed_holo_light" />
+	            </layer-list>
+	        </item>
+	        <item android:state_pressed="false">
+                <layer-list>
+                       <item android:drawable="@drawable/ic_check_green" />
+	            </layer-list>
+	        </item>
+    	</selector>
+    </item>
 </level-list>

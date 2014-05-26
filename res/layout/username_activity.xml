@@ -38,7 +38,8 @@
 		        android:paddingLeft="30dp"
 		       	android:layout_margin="4dp"/>
 			<!-- Icon from: http://www.icons4android.com/icon/1186 -->
-	        <EditText
+
+            <EditText
 	            android:id="@+id/edit_login_username"
 	            android:hint="@string/username"
 	            android:layout_toLeftOf="@id/button_check_availability"
@@ -51,11 +52,6 @@
 		       	android:layout_margin="4dp"
 		       	android:textColor="@android:color/white"/>
         </RelativeLayout>
-        
-        <View
-		    android:layout_width="match_parent"
-		    android:layout_height="2dp"
-		    android:background="?android:attr/listDivider"/>
         
     	<Button 
 	       	android:id="@+id/button_finish_login"
@@ -71,7 +67,7 @@
 	       	android:enabled="false"
 	        style="@style/ButtonText"/>
     	<TextView
-    	    android:id="@+id/textview_username_unavailable"
+    	    android:id="@+id/textview_username_error"
             android:visibility="invisible"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

@@ -15,12 +15,7 @@
         android:layout_centerInParent="true"
         android:background="@drawable/linearlayout_bg"
         android:padding="10dp">
-        
-        <View
-		    android:layout_width="fill_parent"
-		    android:layout_height="2dp"
-		    android:background="?android:attr/listDivider"/>
-        
+                
     	<Button 
 	       	android:id="@+id/button_login_anon"
 	       	android:layout_width="match_parent"

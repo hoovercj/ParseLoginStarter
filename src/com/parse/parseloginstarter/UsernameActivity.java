@@ -1,5 +1,7 @@
 package com.parse.parseloginstarter;
 
+import java.util.regex.Pattern;
+
 import android.app.Activity;
 import android.app.Dialog;
 import android.app.ProgressDialog;
@@ -28,7 +30,7 @@ public class UsernameActivity extends Activity {
 	private ParseUser currentUser;
 	private Button checkUsernameButton;
 	private Button finishLoginButton;
-	private TextView usernameUnavailableText;
+	private TextView usernameErrorText;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +39,7 @@ public class UsernameActivity extends Activity {
 		usernameEditText = (EditText) findViewById(R.id.edit_login_username);
 		checkUsernameButton = (Button) findViewById(R.id.button_check_availability);
 		finishLoginButton = (Button) findViewById(R.id.button_finish_login);
-		usernameUnavailableText = (TextView) findViewById(R.id.textview_username_unavailable);
+		usernameErrorText = (TextView) findViewById(R.id.textview_username_error);
 
 		usernameEditText.addTextChangedListener(new TextWatcher() {
 
@@ -65,7 +67,17 @@ public class UsernameActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				usernameEditText.setEnabled(false);
-				checkUsernameAvailability();
+				checkUsernameButton.setEnabled(false);
+				usernameErrorText.setVisibility(View.INVISIBLE);
+				String username = usernameEditText.getText().toString().toLowerCase().trim();
+				if (validateUsername(username)) {
+					checkUsernameAvailability(username);
+				} else {
+					usernameErrorText.setVisibility(View.VISIBLE);
+					usernameErrorText.setText(R.string.login_text_username_invalid);
+					usernameEditText.setEnabled(true);
+					usernameEditText.setEnabled(true);
+				}
 			}
 		});
 		
@@ -93,18 +105,22 @@ public class UsernameActivity extends Activity {
 		}
 	}
 
-
-	private void checkUsernameAvailability() {	
+	private boolean validateUsername(String username) {
+		Pattern p = Pattern.compile("[^a-zA-Z0-9]");
+		return !p.matcher(username).find();
+	}
+	
+	private void checkUsernameAvailability(String username) {	
 		UsernameActivity.this.progressDialog = ProgressDialog.show(
 				this, "", getString(R.string.spinner_checking_availability), true);	
 
-		String username = usernameEditText.getText().toString().toLowerCase();
 		ParseQuery<ParseUser> query = ParseUser.getQuery();
 		query.whereEqualTo("username", username);
 		query.countInBackground(new CountCallback() {
 			public void done(int count, ParseException e) {
 				UsernameActivity.this.progressDialog.dismiss();
 				usernameEditText.setEnabled(true);
+				checkUsernameButton.setEnabled(true);
 				if (e == null) {
 					// The count request succeeded. Log the count
 					if (count != 0) {
@@ -167,14 +183,15 @@ public class UsernameActivity extends Activity {
 	}
 
 	private void usernameUnavailable() {
+		usernameErrorText.setText(R.string.login_text_username_unavailable);
 		checkUsernameButton.getBackground().setLevel(Const.FAILURE);
-		usernameUnavailableText.setVisibility(View.VISIBLE);
+		usernameErrorText.setVisibility(View.VISIBLE);
 		disableFinishButton();
 	}
 
 	private void usernameAvailable() {
 		checkUsernameButton.getBackground().setLevel(Const.SUCCESS);
-		usernameUnavailableText.setVisibility(View.INVISIBLE);
+		usernameErrorText.setVisibility(View.INVISIBLE);
 		enableFinishButton();
 	}
 
