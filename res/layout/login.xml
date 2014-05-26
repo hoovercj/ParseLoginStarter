@@ -14,9 +14,12 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:background="@drawable/linearlayout_bg"
-        android:padding="10dp"
-        >
+        android:padding="10dp">
         
+        <View
+		    android:layout_width="fill_parent"
+		    android:layout_height="2dp"
+		    android:background="?android:attr/listDivider"/>
         
     	<Button 
 	       	android:id="@+id/button_login_anon"
@@ -30,7 +33,7 @@
 	        android:background="@drawable/layers_anon_button_bg"
 	       	android:text="@string/login_text_anon"
 	        style="@style/ButtonText"
-	       />
+	        android:enabled="true"/>
         <Button 
 	       	android:id="@+id/button_login_fb"
 	       	android:layout_width="match_parent"
@@ -43,7 +46,7 @@
 	        android:background="@drawable/layers_fb_button_bg"
 	       	android:text="@string/login_text_fb"
             style="@style/ButtonText"
-	       />
+            android:enabled="true"/>
         <Button 
 	       	android:id="@+id/button_login_twitter"
 	       	android:layout_width="match_parent"
@@ -56,7 +59,7 @@
 	       	android:background="@drawable/layers_twitter_button_bg"
 	       	android:text="@string/login_text_twitter"
 	       	style="@style/ButtonText"
-	       />
+	       	android:enabled="true"/>
         </LinearLayout>
 
 </RelativeLayout>

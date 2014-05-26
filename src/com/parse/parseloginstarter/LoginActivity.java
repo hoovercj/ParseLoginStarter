@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-
 import com.parse.LogInCallback;
 import com.parse.ParseAnonymousUtils;
 import com.parse.ParseException;
@@ -32,7 +31,7 @@ public class LoginActivity extends Activity implements MyDialog.MyDialogListener
 
 		setContentView(R.layout.login);
 		Log.d(ParseLoginStarterApplication.TAG, "Login - onCreate");
-
+		
 		anonLoginButton = (Button) findViewById(R.id.button_login_anon);
 		anonLoginButton.setOnClickListener(new View.OnClickListener() {
 			@Override
@@ -63,8 +62,11 @@ public class LoginActivity extends Activity implements MyDialog.MyDialogListener
 		// and they are linked to a Facebook account.
 		ParseUser currentUser = ParseUser.getCurrentUser();
 		if ((currentUser != null)) {
-			// Go to the user info activity
-			showMainActivity();
+			if (!currentUser.getBoolean(Const.USERNAME_FLAG)) {
+				showUsernameActivity();
+			} else {
+				showMainActivity();
+			}
 		}
 	}
 	
@@ -98,6 +100,12 @@ public class LoginActivity extends Activity implements MyDialog.MyDialogListener
 		finish();
 	}
 	
+	private void showUsernameActivity() {
+		Intent intent = new Intent(this, UsernameActivity.class);
+		startActivity(intent);
+		finish();
+	}
+	
 	private class MyLogInCallback extends LogInCallback {
 		
 		private String loginType;
@@ -113,14 +121,15 @@ public class LoginActivity extends Activity implements MyDialog.MyDialogListener
 			if (user == null) {
 				Log.d(ParseLoginStarterApplication.TAG,
 						"Uh oh. The user cancelled the login.");
-			} else if (user.isNew()) {
-				Log.d(ParseLoginStarterApplication.TAG,
-						"User signed up and logged in via " + loginType + "!");
-				showMainActivity();
-			} else {
+			} else if (user.getBoolean(Const.USERNAME_FLAG)) {
 				Log.d(ParseLoginStarterApplication.TAG,
 						"User logged in via " + loginType + "!");
 				showMainActivity();
+
+			} else {
+				Log.d(ParseLoginStarterApplication.TAG,
+						"User signed up and logged in via " + loginType + "!");
+				showUsernameActivity();
 			}
 		}
 	}

@@ -1,0 +1,15 @@
+<level-list
+    xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item
+        android:drawable="@drawable/ic_check_gray"
+        android:maxLevel="1"
+        android:minLevel="0" />
+    <item
+        android:drawable="@drawable/ic_check_red"
+        android:maxLevel="2"
+        android:minLevel="2" />
+    <item
+        android:drawable="@drawable/ic_check_green"
+        android:maxLevel="3"
+        android:minLevel="3" />
+</level-list>
