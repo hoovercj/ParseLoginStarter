@@ -98,6 +98,10 @@ public class UsernameActivity extends Activity {
 			// Check if the user is currently logged
 			// and show any cached content
 			this.currentUser = currentUser;
+			usernameEditText.setEnabled(true);
+			checkUsernameButton.setEnabled(true);
+			checkUsernameButton.getBackground().setLevel(Const.DEFAULT);
+			finishLoginButton.setEnabled(false);
 		} else {
 			// If the user is not logged in, go to the
 			// activity showing the login view.
